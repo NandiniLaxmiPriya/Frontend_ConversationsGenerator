@@ -40,10 +40,7 @@ export default function UploadPage() {
       setMessage(`✅ ${json.detail || 'Upload successful'}`);
       setConversation(json.data?.conversation || '');
 
-      // Clear file input
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
+      if (fileInputRef.current) fileInputRef.current.value = '';
     } catch (err: any) {
       setMessage(`❌ ${err.message || 'Upload failed'}`);
       setConversation('');
@@ -53,47 +50,58 @@ export default function UploadPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center px-4 py-10">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-gray-800 p-6 rounded space-y-4 w-full max-w-md"
-      >
-        <h1 className="text-2xl font-bold">Upload a PDF</h1>
-        <input
-          type="file"
-          name="file"
-          accept=".pdf"
-          ref={fileInputRef}
-          className="block w-full text-white"
-          onChange={() => {
-            setMessage('');
-            setConversation('');
-          }}
-        />
-        <button
-          type="submit"
-          className={`px-4 py-2 rounded w-full ${
-            isLoading ? 'bg-gray-600 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
-          }`}
-          disabled={isLoading}
+    <div className="min-h-screen w-full px-4 py-40 text-white overflow-auto">
+        <div className="absolute inset-0 -z-10 bg-conversation bg-cover bg-no-repeat bg-center animate-scroll-bg opacity-10" />
+      <div className="max-w-4xl mx-auto flex flex-col gap-10 items-center">
+        {/* Upload Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-md bg-black/10 backdrop-blur-md rounded-xl shadow-xl p-8 space-y-8"
         >
-          {isLoading ? 'Processing...' : 'Upload'}
-        </button>
-        {message && <p className="mt-2 text-sm text-gray-300">{message}</p>}
-      </form>
+          <h1 className="text-3xl font-bold text-center text-white">Embark by uploading a PDF</h1>
 
-      {isLoading && (
-        <div className="mt-4 text-blue-400 animate-pulse">⏳ Generating conversation...</div>
-      )}
+          <input
+            type="file"
+            name="file"
+            accept=".pdf"
+            ref={fileInputRef}
+            className="block w-full text-sm text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer"
+            onChange={() => {
+              setMessage('');
+              setConversation('');
+            }}
+          />
 
-      {conversation && (
-        <div className="bg-gray-800 p-4 mt-6 w-full max-w-3xl rounded overflow-auto">
-          <h2 className="text-xl font-semibold mb-2">Generated Conversation</h2>
-          <pre className="whitespace-pre-wrap break-words text-sm">
-            {conversation}
-          </pre>
-        </div>
-      )}
+          <button
+            type="submit"
+            className={`w-full py-2 px-4 rounded-lg font-semibold text-white ${
+              isLoading
+                ? 'bg-gray-500 cursor-not-allowed'
+                : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700'
+            } transition-all duration-200`}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Processing...' : 'Upload'}
+          </button>
+
+          {message && <p className="text-sm text-center">{message}</p>}
+        </form>
+
+        {/* Loading Text */}
+        {isLoading && (
+          <div className="text-blue-300 animate-pulse">⏳ Generating conversation...</div>
+        )}
+
+        {/* Output */}
+        {conversation && (
+          <div className="w-full bg-white/10 backdrop-blur-md rounded-xl p-6 overflow-auto">
+            <h2 className="text-xl font-semibold mb-4">🗣️ Generated Conversation</h2>
+            <pre className="whitespace-pre-wrap break-words text-sm text-white">
+              {conversation}
+            </pre>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
