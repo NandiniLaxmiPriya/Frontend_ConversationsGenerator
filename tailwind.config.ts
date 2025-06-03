@@ -13,12 +13,12 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       backgroundImage: {
-        conversation: "url('/Convo_image.jpg')", // make sure this file is in the /public directory
+        conversation: "url('/fall.gif')", // make sure this file is in the /public directory
       },
       keyframes: {
         scrollBackground: {
           "0%": { backgroundPosition: "0 0" },
-          "100%": { backgroundPosition: "100% 0" },
+          "100%": { backgroundPosition: "15% 0" },
         },
       },
       animation: {

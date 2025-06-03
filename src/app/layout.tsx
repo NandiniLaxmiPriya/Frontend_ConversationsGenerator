@@ -28,7 +28,7 @@ export default function RootLayout({
      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
 
         {/* ✅ Scrollable Background Image */}
-        <header className="bg-white/5 backdrop-blur shadow-md z-10 relative">
+        <header className="bg-black/5 backdrop-blur shadow-md z-10 relative">
           <Navigation />
         </header>
 
