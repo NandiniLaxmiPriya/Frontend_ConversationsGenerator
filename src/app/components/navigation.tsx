@@ -11,9 +11,6 @@ export const Navigation = () => {
           <Link href="/about" className="hover:text-blue-400 transition-colors">
             About
           </Link>
-          <Link href="/upload" className="hover:text-blue-400 transition-colors">
-            Generator
-          </Link>
         </nav>
       </div>
   );
