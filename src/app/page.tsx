@@ -51,14 +51,20 @@ export default function UploadPage() {
 
   return (
     <div className="min-h-screen w-full px-4 py-40 text-white overflow-auto">
-        <div className="absolute inset-0 -z-10 bg-conversation bg-cover bg-no-repeat bg-center animate-scroll-bg opacity-10" />
+        <div className="absolute inset-0 -z-10 bg-conversation bg-cover bg-no-repeat bg-center animate-scroll-bg opacity-15" />
       <div className="max-w-4xl mx-auto flex flex-col gap-10 items-center">
         {/* Upload Form */}
+       <h1 className="text-3xl md:text-3xl font-bold text-center text-white backdrop-blur-md rounded-xl shadow-xl p-8 space-y-8">
+  LLM-Powered Comprehension: Personalized Learning from Conversations in Regional Language</h1>
+ <p className="text-3xl md:text-3xl font-bold text-center text-white mt-4 animate-pulse">
+  Convert your PDF into more engaging conversations in one click!
+</p>
+
         <form
           onSubmit={handleSubmit}
           className="w-full max-w-md bg-black/10 backdrop-blur-md rounded-xl shadow-xl p-8 space-y-8"
         >
-          <h1 className="text-3xl font-bold text-center text-white">Embark by uploading a PDF</h1>
+          <h1 className="text-3xl font-bold text-center text-white">Upload a PDF</h1>
 
           <input
             type="file"

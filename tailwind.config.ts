@@ -13,7 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       backgroundImage: {
-        conversation: "url('/fall.gif')", // make sure this file is in the /public directory
+        conversation: "url('/back_convo.png')", // make sure this file is in the /public directory
       },
       keyframes: {
         scrollBackground: {
@@ -28,7 +28,7 @@ const config: Config = {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["dark"],
+    themes: ["dark","light"],
   },
 };
 
